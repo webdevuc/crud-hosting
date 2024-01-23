@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "id": "910a",
+      "firstName": "akash",
+      "lastName": "kamble",
+      "email": "ak@gmail.com",
+      "dob": "2024-01-01T18:30:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "walstar",
+      "experience": 1,
+      "package": 2,
+      "Mobile": 9865974856,
+      "Address": "A/p Kolhapur",
+      "Pincode": 789457,
+      "countrySelected": "IN",
+      "selectedState": "MH",
+      "selectedCity": 133782
+    },
+    {
+      "id": "2020",
+      "firstName": "Ram ",
+      "lastName": "Shinde",
+      "email": "ram@gmail.com",
+      "dob": "1999-02-22T18:30:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "Mobile": 9857468957,
+      "Address": "A/p kolhapur",
+      "Pincode": 789586,
+      "countrySelected": "IN",
+      "selectedState": "MH",
+      "selectedCity": 132556
+    }
+  ],
+  "Country": [
+    {
+      "id": 1,
+      "name": "USA"
+    },
+    {
+      "id": 1,
+      "name": "USA"
+    }
+  ]
+}

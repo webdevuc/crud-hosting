@@ -1,0 +1,183 @@
+<div mat-dialog-title>
+  <h1>Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <!-- ===========================Name row============================ -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Ex. Technical"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Ex. Babaji" formControlName="lastName" />
+      </mat-form-field>
+    </div>
+
+    <!-- ===========================Email & Date of birth row============================ -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="Ex. test@gmail.com"
+          formControlName="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- ===========================Gender row============================ -->
+    <div class="row">
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="others">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- ===========================Education &Education row============================ -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Education</mat-label>
+        <mat-select formControlName="education">
+          <mat-option *ngFor="let val of education" [value]="val"
+            >{{ val }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>company</mat-label>
+        <input
+          matInput
+          placeholder="Ex.  Google"
+          type="text"
+          formControlName="company"
+        />
+      </mat-form-field> -->
+    </div>
+
+    <!-- ===========================Experience & Package row============================ -->
+    <div class="row">
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Experience</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 4"
+          type="number"
+          formControlName="experience"
+        />
+      </mat-form-field> -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Package</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 12"
+          type="number"
+          formControlName="package"
+        />
+        <mat-hint>In rupees</mat-hint>
+      </mat-form-field> -->
+    </div>
+
+    <!-- ===========================Mobile & Address row============================ -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile No.</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="pincode...123"
+          formControlName="Mobile"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="Address"></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- ===========================Pincode & country row============================ -->
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Pincode</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="pincode...123"
+            formControlName="Pincode"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>country</mat-label>
+          <mat-select
+            formControlName="countrySelected"
+            (ngModelChange)="onCountrySelected($event)"
+          >
+            <mat-option
+              *ngFor="let country of listcountry"
+              [value]="country.iso2"
+            >
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> 
+      </div>
+
+    <!-- ===========================State & City row============================ -->
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select
+          formControlName="selectedState"
+          (ngModelChange)="onStateSelected($event)"
+        >
+          <mat-option *ngFor="let state of listState" [value]="state.iso2">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="selectedCity">
+          <mat-option *ngFor="let city of listCity" [value]="city.id ">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- =========================================button Cancel & Save======================================== -->
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ data ? "Update" : "Save" }}
+    </button>
+  </div>
+</form>
